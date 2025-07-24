@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="report_mrp_production_components_inherit" inherit_id="mrp.report_mrp_production_components">
+    <xpath expr="//thead/tr" position="inside">
+        <th class="text-end">Visual Qty</th>
+        <th class="text-end">Real Qty</th>
+        <th class="text-end">Scrap Qty</th>
+        <th class="text-end">Scrap %</th>
+    </xpath>
+
+    <xpath expr="//tbody/tr" position="inside">
+      <td class="text-end">
+        <t t-if="raw_line.visual_qty">
+          <span t-esc="raw_line.visual_qty"/> <span t-esc="raw_line.product_uom.name"/>
+        </t>
+      </td>
+      <td class="text-end">
+        <t t-if="raw_line.real_qty">
+          <span t-esc="raw_line.real_qty"/> <span t-esc="raw_line.product_uom.name"/>
+        </t>
+      </td>
+      <td class="text-end">
+        <t t-if="raw_line.scrap_qty">
+          <span t-esc="raw_line.scrap_qty"/> <span t-esc="raw_line.product_uom.name"/>
+        </t>
+      </td>
+      <td class="text-end">
+        <t t-if="raw_line.usage_percent">
+          <t t-esc="round(raw_line.usage_percent, 2)"/>%
+        </t>
+      </td>
+    </xpath>
+  </template>
+</odoo>

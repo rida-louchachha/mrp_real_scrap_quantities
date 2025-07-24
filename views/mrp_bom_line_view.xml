@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="view_mrp_bom_form_inherit" model="ir.ui.view">
+    <field name="name">mrp.bom.form.inherit.visual.real</field>
+    <field name="model">mrp.bom</field>
+    <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='bom_line_ids']/list/field[@name='product_id']" position="after">
+
+        <field name="visual_qty"
+               options="{'unit': 'product_uom_id', 'unit_text': 'lower'}"
+               />
+
+        <field name="scrap_qty"
+               options="{'unit': 'product_uom_id', 'unit_text': 'lower'}"
+               />
+
+        <field name="real_qty"
+               options="{'unit': 'product_uom_id', 'unit_text': 'lower'}"
+               readonly="1"
+               />
+
+        <field name="usage_percent"
+               widget="percent"
+               readonly="1"
+               />
+
+      </xpath>
+    </field>
+  </record>
+</odoo>
